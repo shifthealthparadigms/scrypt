@@ -26,8 +26,8 @@ namespace "ffi-compiler" do
   FFI::Compiler::CompileTask.new('ext/scrypt/scrypt_ext') do |t|
     t.cflags << "-Wall -msse -msse2"
     t.cflags << "-D_GNU_SOURCE=1" if RbConfig::CONFIG["host_os"].downcase =~ /mingw/
-    t.cflags << "-arch x86_64 -arch i386" if t.platform.mac?
-    t.ldflags << "-arch x86_64 -arch i386" if t.platform.mac?
+    t.cflags << "-arch x86_64" if t.platform.mac?
+    t.ldflags << "-arch x86_64" if t.platform.mac?
   end
 end
 task :compile_ffi => ["ffi-compiler:default"]
